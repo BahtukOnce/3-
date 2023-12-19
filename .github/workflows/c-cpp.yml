@@ -24,7 +24,7 @@ jobs:
         
         make test
     - name: start tests
-      run: ./main
+      run: mpirun -np 20 ./main
 
     - name: compile debug
       run: |
