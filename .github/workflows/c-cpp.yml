@@ -1,0 +1,32 @@
+name: C/C++
+
+on:
+  push:
+    branches: [ "test1" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: installation
+      run: sudo apt install -y googletest libgtest-dev build-essential
+    - name: Установка MPI
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y mpich
+    - name: Компиляция модульных тестируемых
+      run: |
+        
+        make test
+    - name: Запуск модульных тестов
+      run: ./main
+
+    - name: Компиляция и запуск тестов
+      run: |
+        mpic++ -o test test.cpp
+        mpirun -np 20 ./test
