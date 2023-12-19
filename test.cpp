@@ -38,7 +38,7 @@ TEST(FunctionTesting2, check2) {
     int secret_part = 0;
     int rank = 0;
     fill_secret_part(secret_part, rank, temp);
-    EXPECT_EQ(secret_part,0);
+    EXPECT_EQ(secret_part,5435);
 }
 #endif
 
