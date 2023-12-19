@@ -28,18 +28,17 @@ void print(int secret_code[], int rank, int size) {
 #include <gtest/gtest.h>
 
 TEST(FunctionTesting, check) {
-    std::vector<int> a = {1,2,3,4,5};
     int temp[] {5435,345,35,24,6546,35,36,546,35326,546,457,35,234,34,645,74,57,568,679};
     int secret_part=0;
     fill_secret_part(secret_part, 17, temp);
     EXPECT_EQ(secret_part, 57);
 }
 TEST(FunctionTesting2, check2) {
-    int temp[] {5435,345,35,24,6546,35,36,546,35326,546,457,35,234,34,645,74,57,568,679};
+    int temp[] {};
     int secret_part = 0;
     int rank = 8;
     fill_secret_part(secret_part, rank, temp);
-    EXPECT_EQ(1,1);
+    EXPECT_EQ(secret_part,0);
 }
 #endif
 
