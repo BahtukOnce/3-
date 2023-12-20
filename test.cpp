@@ -40,13 +40,79 @@ TEST(FunctionTesting2, check2) {
     fill_secret_part(secret_part, rank, temp);
     EXPECT_EQ(temp[rank -1], secret_part);
 }
+
 TEST(FunctionTesting3, check3) {
-    int temp[] {5435,345,35,24,6546,35,36,546,35326,546,457,35,234,34,645,74,57,568,679};
+    int temp[] {11, 12, 15};
     int secret_part = 0;
-    int rank = 0;
-    fill_secret_part(secret_part, rank, temp);
-    EXPECT_EQ(secret_part,5435);
+    int array_size = 3;
+    int *secret_code;
+    secret_code = new int[array_size];
+    int *result = new int[array_size]{10, 15, 15};
+    secret_code[0] = 10;
+    for (int i = 1; i < array_size; i++) {
+        fill_secret_part(secret_part, 3, temp);
+        secret_code[i] = secret_part;
+    }
+    for (int i = 0; i < array_size; i++) {
+        EXPECT_EQ(secret_code[i], result[i]);
+    }
 }
+
+TEST(FunctionTesting4, check4) {
+    int temp[] {151, 132, 15};
+    int secret_part = 0;
+    int array_size = 3;
+    int *secret_code;
+    secret_code = new int[array_size];
+    int *result = new int[array_size]{0, 151, 132};
+    secret_code[0] = 0;
+    for (int i = 1; i < array_size; i++) {
+        fill_secret_part(secret_part, i, temp);
+        secret_code[i] = secret_part;
+    }
+    print(secret_code, 0, 3);
+    for (int i = 0; i < array_size; i++) {
+        EXPECT_EQ(secret_code[i], result[i]);
+    }
+}
+
+TEST(FunctionTesting5, check5) {
+    int temp[] {151, 132, 15};
+    int secret_part = 0;
+    int array_size = 3;
+    int *secret_code;
+    secret_code = new int[array_size];
+    int *result = new int[array_size]{1, 132, 15};
+    secret_code[0] = 0;
+    for (int i = 1; i < array_size; i++) {
+        fill_secret_part(secret_part, i, temp);
+        secret_code[i] = secret_part;
+    }
+    for (int i = 0; i < array_size; i++) {
+        EXPECT_NE(secret_code[i], result[i]);
+    }
+}
+
+TEST(RandTesting1, check3) {
+    int rank = 0;
+    int rand_num=get_random_number(0);
+    int rand_test= rand() % 255;
+    EXPECT_NE(rand_num, rand_test); 
+}
+
+TEST(RandTesting2, checkIfEqual) {
+    int rank = 0;
+    int rand_num1=get_random_number(0);
+    int rand_num2=get_random_number(0);
+    EXPECT_EQ(rand_num1, rand_num2); 
+}
+
+TEST(RandTesting3, check_not_equal) {
+    int rand_num1=get_random_number(1);
+    int rand_num2=get_random_number(5);
+    EXPECT_NE(rand_num1, rand_num2); 
+}
+
 #endif
 
 
